@@ -4,7 +4,6 @@ public class Cell {
     protected String column;
     protected int row;
     protected Content content;
-    protected String contentValue;
 
     public String getColumn() {
         return column;
@@ -12,10 +11,6 @@ public class Cell {
 
     public int getRow() {
         return row;
-    }
-
-    public String getContentValue() {
-        return contentValue;
     }
 
     public void setColumn(String column) {
@@ -26,14 +21,13 @@ public class Cell {
         this.row = row;
     }
 
-    public void setContentValue(String contentValue) {
-        this.contentValue = contentValue;
-    }
-
-    public Cell(String column, int row, String contentValue){
+    public Cell(String column, int row){
         this.column = column;
         this.row = row;
-        this.contentValue = contentValue;
+    }
+
+    public void setContent(Content content){
+        this.content = content;
     }
 }
 
