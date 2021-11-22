@@ -1,4 +1,11 @@
 package com.company;
 
-public class TextNumerical extends Content{
+public class TextNumerical {
+
+    String contentValue;
+
+    public String getContent(){
+        return "content : TextNumerical";
+    }
+
 }

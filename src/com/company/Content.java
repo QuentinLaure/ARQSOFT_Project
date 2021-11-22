@@ -2,8 +2,18 @@ package com.company;
 
 public class Content {
 
-    public String getContent(){
-        return "Parent Content Class";
+    String contentValue;
+
+    public Content(String contentValue){
+        this.contentValue = contentValue;
+    }
+
+    public String getValue(){
+        return "content : Parent Class : "+contentValue;
+    }
+
+    public void setValue(String contentValue){
+        this.contentValue = contentValue;
     }
 
     // Make 3 classes that inherit from this one
