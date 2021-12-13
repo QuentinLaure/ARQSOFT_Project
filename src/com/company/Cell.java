@@ -21,9 +21,14 @@ public class Cell {
         if(this.content == null) {
             this.value = "Null";
         } else if(this.content.charAt(0) == '=') {
-            this.value = "Int";
+            this.value = "Formula";
         } else {
-            this.value = "Exceptioon";
+            try {
+                this.value = String.valueOf(Integer.parseInt(this.content));
+                //this.value = "Int";
+            } catch (NumberFormatException e) {
+                this.value = "It's a String";
+            }
         }
     }
 

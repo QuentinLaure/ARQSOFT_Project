@@ -7,7 +7,7 @@ public class Main {
         System.out.println("HELLO");
         Spreadsheet spreadsheet_obj = new Spreadsheet(5,5);
 
-        spreadsheet_obj.setCell(0,0,"=firstTest");
+        spreadsheet_obj.setCell(0,0,"yui");
 
         System.out.println(spreadsheet_obj.getCell(0,0).getContent());
         spreadsheet_obj.refreshCell(0,0);
