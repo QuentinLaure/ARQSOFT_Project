@@ -1,5 +1,4 @@
 package com.company;
-import java.util.Arrays;
 
 public class Spreadsheet {
 
@@ -11,9 +10,6 @@ public class Spreadsheet {
         this.nrow = nrow;
         this.ncol = ncol;
         this.cellArray = new Cell[this.nrow][this.ncol];
-        Content a = new Content("Test");
-        this.cellArray[0][0] = new Cell(a);
-        //Arrays.fill(this.cellArray, "Default");
     }
 
     public int getNrow() {
@@ -37,13 +33,18 @@ public class Spreadsheet {
     }
 
     public void setCell(int nrow, int ncol, String value) {
-        System.out.println(this.cellArray.length);
-        System.out.println(this.cellArray[0].length);
+        if(this.cellArray[nrow][ncol]==null) {
+            this.cellArray[nrow][ncol] = new Cell("");
+        }
         this.cellArray[nrow][ncol].setContent(value);
     }
 
     public Cell getCell(int nrow, int ncol){
         return this.cellArray[nrow][ncol];
+    }
+
+    public void refreshCell(int nrow,int ncol){
+        this.cellArray[nrow][ncol].refreshValue();
     }
 
 }
