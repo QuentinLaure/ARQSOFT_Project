@@ -1,10 +1,11 @@
 package com.company;
 
-public class FormulaContent {
+public class ContentText {
 
     String contentValue;
 
     public String getContent(){
-        return "content : FormulaContent";
+        return "content : TextNumerical";
     }
+
 }

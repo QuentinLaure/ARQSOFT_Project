@@ -1,39 +1,26 @@
 package com.company;
 
 public class Cell {
-    protected String content;
-    protected String value;
+    protected Content content;
 
-    public Cell(String content){
-        this.content = content;
-        this.value = "";
+    public Cell(String contentInput){
+        this.content = new Content(contentInput);
     }
 
-    public void setContent(String content){
-        this.content = content;
+    public void setContent(String contentInput){
+        this.content.setInput(contentInput);
     }
 
     public String getContent(){
-        return this.content;
-    }
-
-    public void refreshValue(){
-        if(this.content == null) {
-            this.value = "Null";
-        } else if(this.content.charAt(0) == '=') {
-            this.value = "Formula";
-        } else {
-            try {
-                this.value = String.valueOf(Integer.parseInt(this.content));
-                //this.value = "Int";
-            } catch (NumberFormatException e) {
-                this.value = "It's a String";
-            }
-        }
+        return this.content.getInput();
     }
 
     public String getValue(){
-        return this.value;
+        return this.content.getValue();
+    }
+
+    public void refreshValue(){
+        this.content.refreshValue();
     }
 }
 

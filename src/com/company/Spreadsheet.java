@@ -16,27 +16,19 @@ public class Spreadsheet {
         return nrow;
     }
 
-    public void setNrow(int nrow) {
-        this.nrow = nrow;
-    }
-
     public int getNcol() {
         return ncol;
-    }
-
-    public void setNcol(int ncol) {
-        this.ncol = ncol;
     }
 
     public Cell[][] getArray() {
         return cellArray;
     }
 
-    public void setCell(int nrow, int ncol, String value) {
+    public void setCell(int nrow, int ncol, String contentInput) {
         if(this.cellArray[nrow][ncol]==null) {
             this.cellArray[nrow][ncol] = new Cell("");
         }
-        this.cellArray[nrow][ncol].setContent(value);
+        this.cellArray[nrow][ncol].setContent(contentInput);
     }
 
     public Cell getCell(int nrow, int ncol){
