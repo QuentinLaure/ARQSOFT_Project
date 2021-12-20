@@ -21,7 +21,8 @@ public class Cell {
         return this.value;
     }
 
-    public void refreshValue(){
+    // Now implemented in Spreadsheet : is that the correct way to do it?
+    /*public void refreshValue(){
         //System.out.println("We refresh value from Content");
         if (this.content == null) {
             System.out.println("Cell Type : Null");
@@ -39,6 +40,6 @@ public class Cell {
 
             }
         }
-    }
+    }*/
 }
 
