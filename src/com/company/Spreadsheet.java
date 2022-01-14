@@ -27,6 +27,10 @@ public class Spreadsheet {
     }
 
     public void setCell(int nrow, int ncol, String contentInput) {
+        System.out.println("Creating a Cell at position ("+nrow+","+ncol+") whose content is "+contentInput);
+        if(contentInput == null){
+            System.out.println("ERROR ICI ICI ICI");
+        }
         //if(this.cellArray[nrow][ncol]==null) {
             //this.cellArray[nrow][ncol] = new Cell("");
             if (contentInput.charAt(0) == '=') {
@@ -76,44 +80,42 @@ public class Spreadsheet {
 
 
     public static ArrayList<ArrayList<String>> importSpreadsheet() throws Exception {
+        System.out.println("We start importing the spreadsheet");
+        //parsing a CSV file into Scanner class constructor
+//        Scanner sc = new Scanner(new File("/home/ubuntu18/Documents/testCSV.csv"));
+        Scanner sc = new Scanner(new File("E:\\JAVA\\exportedCSV.csv"));
 
-                //parsing a CSV file into Scanner class constructor
-        Scanner sc = new Scanner(new File("/home/ubuntu18/Documents/testCSV.csv"));
         ArrayList<ArrayList<String>> arrayImported = new ArrayList<ArrayList<String>>();
         //arrayImported.set(0,new ArrayList<>());
 
-        while (sc.hasNext())  //returns a boolean value
-                {
+        while (sc.hasNext()){  //returns a boolean value
+            String[] temporal= sc.nextLine().split(";",-1); // -1 consider null on split
+            // https://stackoverflow.com/questions/14602062/java-string-split-removed-empty-values
 
-                    String[] temporal= sc.nextLine().split(";",-1); // -1 consider null on split
-                    // https://stackoverflow.com/questions/14602062/java-string-split-removed-empty-values
+            ArrayList test = new ArrayList<String>(Arrays.asList(temporal)) ;
+            arrayImported.add(test);
+            System.out.println( test);
+            System.out.println("temporal[0] " + temporal[0]);
+            if(temporal[0].trim().isEmpty()){
+                System.out.println("WE HAVE AN EMPTY LINE");
+            }
+            //System.out.println(sc.next());  //find and returns the next complete token from this scanner
+        }
 
-                    ArrayList test = new ArrayList<String>(Arrays.asList(temporal)) ;
-                    arrayImported.add(test);
-                    System.out.println( test);
-                    System.out.println("temporal[0]" + temporal[0]);
-
-                    //System.out.println(sc.next());  //find and returns the next complete token from this scanner
-
-                }
-
-                sc.close();  //closes the scanner
+        sc.close();  //closes the scanner
         System.out.println("imported arrayImported 0"+ arrayImported.get(0));
         System.out.println("imported arrayImported 0 0"+ arrayImported.get(0).get(0));
 
     return arrayImported;
     }
 
-    public void exportSpreadSheet()
-    {
+    public void exportSpreadSheet() {
         System.out.println("exporting spreadshet");
         try {
            // int[][] matrix = new int[3][3];
 
-            BufferedWriter writer = new BufferedWriter(new FileWriter("/home/ubuntu18/Documents/exportedCSV.csv"));
-
-
-            //int num = 1;
+//            BufferedWriter writer = new BufferedWriter(new FileWriter("/home/ubuntu18/Documents/exportedCSV.csv"));
+            BufferedWriter writer = new BufferedWriter(new FileWriter("E:\\JAVA\\exportedCSV.csv"));
 
             for (int i = 0; i < this.cellArray.length; i++){
                 StringBuilder sb = new StringBuilder();
@@ -142,6 +144,7 @@ public class Spreadsheet {
             System.out.println("Error");
         }
     }
+
     public void refreshAllCellsValues(){
         // iterate over every cell and refresh their value
         System.out.println("Method to refresh the values of every cell of the spreadsheet");
