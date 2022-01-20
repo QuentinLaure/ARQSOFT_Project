@@ -11,7 +11,12 @@ public class CellFormula extends Cell{
     }
 
     public String getValue(){
-        return String.valueOf(Algorithm.evaluate(this.content));
+        //System.out.println("obtained value on cell formula get Value is "+ Algorithm.evaluate(this.content));
+
+        if (Algorithm.evaluate(this.content)!=null)
+            return String.valueOf(Algorithm.evaluate(this.content));
+        else
+            return "#VALUE!";
     }
 
     public String getCellValue(char rowLetter, int column){
