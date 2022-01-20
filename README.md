@@ -20,5 +20,5 @@ The following methods of Spreadsheet.java are used :
 4.- Our class diagram is depicted in the following link: https://github.com/QuentinLaure/ARQSOFT_Project/blob/Alternative1/Package%20diagram.png
 
 
-Quentin Laurent
+Quentin Laurent /
 Miguel Fuentes
