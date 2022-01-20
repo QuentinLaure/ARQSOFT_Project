@@ -45,16 +45,10 @@ public class Spreadsheet {
                 }
             }
         }
-        //this.cellArray[nrow][ncol].setContent(contentInput);
-    //}
 
     public static Cell getCell(int nrow, int ncol){
         return cellArray[nrow][ncol];
     }
-
-    /*public void refreshCellValue(int nrow,int ncol){
-        this.cellArray[nrow][ncol].refreshValue();
-    }*/
 
     public void displaySheet(){
         System.out.println("Method to display the spreadsheet 1, with the value of every cell");
@@ -141,11 +135,6 @@ public class Spreadsheet {
         } catch (Exception e) {
             System.out.println("Error");
         }
-    }
-
-    public void refreshAllCellsValues(){
-        // iterate over every cell and refresh their value
-        System.out.println("Method to refresh the values of every cell of the spreadsheet");
     }
 
     public static int fromAlphabeticalToRow(char a){

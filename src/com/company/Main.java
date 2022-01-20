@@ -12,11 +12,10 @@ public class Main {
         spreadsheet_obj.setCell(0,0,"uno");
         System.out.println(spreadsheet_obj.getCell(0,0).getContent());
         System.out.println(spreadsheet_obj.getCell(0,0).getValue());
-//        spreadsheet_obj.setCell(0,0,"New Try value");
         spreadsheet_obj.setCell(0,1,"dos");
         spreadsheet_obj.setCell(0,2,"tres");
-        spreadsheet_obj.setCell(1,0,"1");
-        spreadsheet_obj.setCell(1,1,"2");
+        spreadsheet_obj.setCell(1,0,"45");
+        spreadsheet_obj.setCell(1,1,"3");
 //        spreadsheet_obj.setCell(1,2,"3");
         spreadsheet_obj.setCell(2,0,"test");
         System.out.println(spreadsheet_obj.getCell(0,0).getContent());
@@ -41,7 +40,7 @@ public class Main {
 //            }
 //        }
 
-        spreadsheet_obj.setCell(1,2,"=B1+B2");
+        spreadsheet_obj.setCell(1,2,"=B1+(10+B2)*2");
         System.out.println(spreadsheet_obj.getCell(1,2).getContent());
         System.out.println("value : "+spreadsheet_obj.getCell(1,2).getValue());
 

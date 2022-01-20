@@ -7,15 +7,9 @@ package com.company;
 import java.util.Stack;
 
 public class Algorithm {
-    public static int evaluate(String expression) {
+    public static Integer evaluate(String expression) {
         char[] tokens = expression.toCharArray();
-        System.out.println("expression tokens"+tokens + "tokens.length"+tokens.length);
         // Stack for numbers: 'values'
-        String D11 = "11" ;
-        String AF13 = "20";
-
-        System.out.println("printing the string int value char before if " + Integer.parseInt(D11));
-
         Stack<Integer> values = new Stack<Integer>();
 
         // Stack for Operators: 'ops'
@@ -29,52 +23,21 @@ public class Algorithm {
             if (Character.isUpperCase(tokens[i])) {
                 int row = getAlphabeticalRank(tokens[i]);
                 StringBuffer sbuf2 = new StringBuffer();
-                System.out.println("i value "+ i +" token {i} "+tokens[i] );
                 // There may be more than one digits in number
-               /* if(i<tokens.length) {
-                    while (i < tokens.length && (tokens[i] >= '0' && tokens[i] <= '9') || Character.isUpperCase(tokens[i])) {
-                        sbuf2.append(tokens[i]);
-                        i++;
-                        System.out.println("buffer containing : " + sbuf2.toString());
-                        System.out.println("i = " + i + "/" + tokens.length);
-                        if(i==tokens.length){
-                            System.out.println("We continue");
-                            break;
-                        }
-
-                    }
-                }
-                System.out.println("printing the string value "+sbuf2.toString()+" at position (" +row+","+ sbuf2.toString().substring(1) +") and length = " + sbuf2.toString().length());
-//                System.out.println("printing the string int value char" + Integer.parseInt( sbuf2.toString() ) );
-//                values.push(Integer.parseInt(sbuf2.toString()));
-                int col = Integer.parseInt( sbuf2.toString().substring(1) );
-                System.out.println(Spreadsheet.getCell(row-1,col-1));
-                values.push(Integer.parseInt(Spreadsheet.getCell(row,Integer.parseInt(sbuf2.toString().substring(1))).getValue()));
-*/
-                // right now the i points to the character next to the digit, since the for loop also increases
-                // the i, we would skip one token position; we need to decrease the value of i by 1 to correct the offset.
 
                 while (i < tokens.length && (tokens[i] >= '0' && tokens[i] <= '9')|| Character.isUpperCase(tokens[i]) ) {
-                    System.out.println("on while");
                     sbuf2.append(tokens[i++]);
                     if (i == tokens.length) // added to match value when we have only "A1" or B2 , etc as input after =.
                     {
                         break;}
                 }
 
-                System.out.println("printing the string value "+sbuf2.toString()+" at position (" +row+","+ sbuf2.toString().substring(1) +") and length = " + sbuf2.toString().length());
-
                 int col = Integer.parseInt( sbuf2.toString().substring(1) );
-                System.out.println("printing the string value 2 "+sbuf2.toString()+" at position (" +row+","+ col +") and length = " + sbuf2.toString().length());
-                System.out.println("the value is "+ Spreadsheet.getCell(row, col -1).getContent());
-                int resultVAlue = Integer.parseInt( Spreadsheet.getCell(row, col -1).getContent());
-                System.out.println("printing the string int value char" + resultVAlue);
-                values.push(resultVAlue);
-                System.out.println("checking values after push"+values);
-                //i--;
-                if (i == tokens.length) // added to match value when we have only "A1" or B2 , etc as input after =.
-                {
-                    break;}
+                int resultValue = Integer.parseInt( Spreadsheet.getCell(row, col -1).getValue());
+                values.push(resultValue);
+                if (i == tokens.length) { // added to match value when we have only "A1" or B2 , etc as input after =.
+                    break;
+                }
             }
 
             // Current token is a number, push it to stack for numbers
@@ -86,7 +49,6 @@ public class Algorithm {
                 while (i < tokens.length && tokens[i] >= '0' && tokens[i] <= '9')
                     sbuf.append(tokens[i++]);
                 values.push(Integer.parseInt(sbuf.toString()));
-                System.out.println("checking values after push on token [0 9]"+values);
                 // right now the i points to the character next to the digit, since the for loop also increases the i,
                 // we would skip one token position; we need to decrease the value of i by 1 to correct the offset.
                 i--;
@@ -100,7 +62,6 @@ public class Algorithm {
             else if (tokens[i] == ')') {
                 while (ops.peek() != '(')
                     values.push(applyOp(ops.pop(), values.pop(), values.pop()));
-                System.out.println("checking values after push token = )"+values);
                 ops.pop();
             }
 
@@ -110,21 +71,21 @@ public class Algorithm {
                 // Apply operator on top of 'ops' to top two elements in values stack
                 while (!ops.empty() && hasPrecedence(tokens[i], ops.peek())) {
                     values.push(applyOp(ops.pop(), values.pop(), values.pop()));
-                    System.out.println("checking values after push on tokens == + - *"+values);
                 }
                 // Push current token to 'ops'.
                 ops.push(tokens[i]);
+            } else {
+                if(tokens[i]!='='){
+                    return null;
+                }
             }
         }
 
         // Entire expression has been parsed at this point, apply remaining ops to remaining values
         while (!ops.empty()) {
             values.push(applyOp(ops.pop(), values.pop(), values.pop()));
-            System.out.println("checking values after push on while ops empty"+values);
         }
         // Top of 'values' contains result, return it
-        System.out.println("printing stack values to operate before print "+ values);
-        //System.out.println("printing values pop "+ values.pop());
         return values.pop();
     }
 
@@ -161,19 +122,8 @@ public class Algorithm {
         int temp = (int)a;
         int temp_integer = 64; //for upper case
         if(temp<=90 & temp>=65) {
-            System.out.println(temp - temp_integer);
             rank = temp - temp_integer ;
         }
         return rank-1; // to have 0 as A, etc..
-    }
-
-    // Driver method to test above methods
-    public static void main(String[] args) {
-        System.out.println(Algorithm.evaluate("100*2-12"));
-//        System.out.println(Algorithm.evaluate("100 * ( 2 + 12 )"));
-//        System.out.println(Algorithm.evaluate("100 * ( 2 + 12 ) / 14"));
-        System.out.println("####");
-        System.out.println(Algorithm.evaluate("B1+10+2*6"));
-
     }
 }
