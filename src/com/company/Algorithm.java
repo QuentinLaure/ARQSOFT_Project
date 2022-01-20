@@ -7,7 +7,7 @@ package com.company;
 import java.util.Stack;
 
 public class Algorithm {
-    public static int evaluate(String expression) {
+    public static Integer evaluate(String expression) {
         char[] tokens = expression.toCharArray();
         System.out.println("expression tokens"+tokens + "tokens.length"+tokens.length);
         // Stack for numbers: 'values'
@@ -114,6 +114,11 @@ public class Algorithm {
                 }
                 // Push current token to 'ops'.
                 ops.push(tokens[i]);
+            }
+             else {
+                if ( tokens[i] != '=' )
+                 return null;
+
             }
         }
 
