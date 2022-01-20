@@ -8,8 +8,9 @@ Brief description of a basic spreadsheet.
 
 # Description
 
-A Basic version has been developed taking in account the requirements.
+A Basic version has been developed taking in account the requirements_.
 The following methods of Spreadsheet.java are used :
-1.-  [The importSpreadsheet method receive a .csv in text mode file and import the values] (https://github.com/QuentinLaure/ARQSOFT_Project/blob/Alternative1/src/com/company/Spreadsheet.java#L58)
-2.- [ The exportSpreadSheet method transfer to a .csv file and export the values of a Spreadsheet  (https://github.com/QuentinLaure/ARQSOFT_Project/blob/Alternative1/src/com/company/Spreadsheet.java#L88)
-3.- Formulas has been tested to admit values from other cell positions like A1, A2,B1 etc on Integer format.
+
+1.-  [The importSpreadsheet method receive a .csv in text mode file and import the values] (https://github.com/QuentinLaure/ARQSOFT_Project/blob/Alternative1/src/com/company/Spreadsheet.java#L58) _.
+2.- [ The exportSpreadSheet method transfer to a .csv file and export the values of a Spreadsheet  (https://github.com/QuentinLaure/ARQSOFT_Project/blob/Alternative1/src/com/company/Spreadsheet.java#L88) _.
+3.- Formulas has been tested to admit values from other cell positions like A1, A2,B1 etc on Integer format. _.
