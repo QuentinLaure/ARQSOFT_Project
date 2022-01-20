@@ -6,11 +6,7 @@ public class Cell {
 
     public Cell(String contentInput){
         this.content = contentInput;
-        this.value = "DEFAULT VALUE FOR CONTENT";
-    }
-
-    public void setContent(String contentInput){
-        this.content = contentInput;
+        this.value = "DEFAULT VALUE";
     }
 
     public String getContent(){

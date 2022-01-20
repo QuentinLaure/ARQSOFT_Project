@@ -32,8 +32,8 @@ public class Algorithm {
                         break;}
                 }
 
-                int col = Integer.parseInt( sbuf2.toString().substring(1) );
-                int resultValue = Integer.parseInt( Spreadsheet.getCell(row, col -1).getValue());
+                int col = Integer.parseInt( sbuf2.toString().substring(1))-1;
+                int resultValue = Integer.parseInt( Spreadsheet.getCell(row, col).getValue());
                 values.push(resultValue);
                 if (i == tokens.length) { // added to match value when we have only "A1" or B2 , etc as input after =.
                     break;
