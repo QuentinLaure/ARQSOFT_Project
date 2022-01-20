@@ -6,7 +6,7 @@ public class Spreadsheet {
 
     protected int nrow;
     protected int ncol;
-    protected Cell[][] cellArray;
+    protected static Cell[][] cellArray;
 
     public Spreadsheet(int nrow, int ncol){
         this.nrow = nrow;
@@ -29,29 +29,27 @@ public class Spreadsheet {
     public void setCell(int nrow, int ncol, String contentInput) {
         System.out.println("Creating a Cell at position ("+nrow+","+ncol+") whose content is "+contentInput);
         if(contentInput == null){
-            System.out.println("ERROR ICI ICI ICI");
+            System.out.println("ERROR NULL WHILE CELL INITIALIZATION");
         }
-        //if(this.cellArray[nrow][ncol]==null) {
-            //this.cellArray[nrow][ncol] = new Cell("");
             if (contentInput.charAt(0) == '=') {
                 System.out.println("Creating a CellFormula at position ("+nrow+","+ncol+")");
-                this.cellArray[nrow][ncol] = new CellFormula(contentInput);
+                cellArray[nrow][ncol] = new CellFormula(contentInput);
             } else {
                 try {
-                    int val = Integer.parseInt(contentInput); // String.valueOf(Integer.parseInt(contentInput));
-                    this.cellArray[nrow][ncol] = new CellNumerical(contentInput);
+                    int val = Integer.parseInt(contentInput); // if this does not raise a NumberFormatExpression, then it was a int
+                    cellArray[nrow][ncol] = new CellNumerical(contentInput);
                     System.out.println("Creating a CellNumerical at position ("+nrow+","+ncol+")");
                 } catch (NumberFormatException e) {
                     System.out.println("Creating a CellText at position ("+nrow+","+ncol+")");
-                    this.cellArray[nrow][ncol] = new CellText(contentInput);
+                    cellArray[nrow][ncol] = new CellText(contentInput);
                 }
             }
         }
         //this.cellArray[nrow][ncol].setContent(contentInput);
     //}
 
-    public Cell getCell(int nrow, int ncol){
-        return this.cellArray[nrow][ncol];
+    public static Cell getCell(int nrow, int ncol){
+        return cellArray[nrow][ncol];
     }
 
     /*public void refreshCellValue(int nrow,int ncol){
@@ -150,4 +148,14 @@ public class Spreadsheet {
         System.out.println("Method to refresh the values of every cell of the spreadsheet");
     }
 
+    public static int fromAlphabeticalToRow(char a){
+        int rank = -1 ;
+        int temp = (int)a;
+        int temp_integer = 64; //for upper case
+        if(temp<=90 & temp>=65) {
+//            System.out.println(temp - temp_integer);
+            rank = temp - temp_integer ;
+        }
+        return rank;
+    }
 }

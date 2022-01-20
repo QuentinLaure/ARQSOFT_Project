@@ -21,25 +21,5 @@ public class Cell {
         return this.value;
     }
 
-    // Now implemented in Spreadsheet : is that the correct way to do it?
-    /*public void refreshValue(){
-        //System.out.println("We refresh value from Content");
-        if (this.content == null) {
-            System.out.println("Cell Type : Null");
-            this.value = "Null";
-        } else if (this.content.charAt(0) == '=') {
-            System.out.println("Cell Type : String");
-            this.value = this.content;
-        } else {
-            try {
-                this.value = String.valueOf(Integer.parseInt(this.content));
-                System.out.println("Cell Type : Int");
-            } catch (NumberFormatException e) {
-                System.out.println("Cell Type : String");
-                this.value = this.content;
-
-            }
-        }
-    }*/
 }
 

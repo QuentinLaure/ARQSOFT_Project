@@ -10,4 +10,13 @@ public class CellFormula extends Cell{
         return "content of CellFormula : "+this.content;
     }
 
+    public String getValue(){
+        return String.valueOf(Algorithm.evaluate(this.content));
+    }
+
+    public String getCellValue(char rowLetter, int column){
+        int row = Spreadsheet.fromAlphabeticalToRow(rowLetter);
+        return Spreadsheet.getCell(row,column).getValue();
+    }
+
 }

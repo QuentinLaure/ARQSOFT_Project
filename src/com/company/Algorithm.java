@@ -31,12 +31,24 @@ public class Algorithm {
                 StringBuffer sbuf2 = new StringBuffer();
 
                 // There may be more than one digits in number
-                while (i < tokens.length && (tokens[i] >= '0' && tokens[i] <= '9')|| Character.isUpperCase(tokens[i]) ) {
-                    sbuf2.append(tokens[i++]);
+                if(i<tokens.length) {
+                    while (i < tokens.length && (tokens[i] >= '0' && tokens[i] <= '9') || Character.isUpperCase(tokens[i])) {
+                        sbuf2.append(tokens[i]);
+                        i++;
+                        System.out.println("buffer containing : " + sbuf2.toString());
+                        System.out.println("i = " + i + "/" + tokens.length);
+                        if(i==tokens.length){
+                            System.out.println("We continue");
+                            continue;
+                        }
+
+                    }
                 }
                 System.out.println("printing the string value "+sbuf2.toString()+" at position (" +row+","+ sbuf2.toString().substring(1) +") and length = " + sbuf2.toString().length());
-                System.out.println("printing the string int value char" + Integer.parseInt( sbuf2.toString() ) );
-                values.push(Integer.parseInt(sbuf2.toString()));
+//                System.out.println("printing the string int value char" + Integer.parseInt( sbuf2.toString() ) );
+//                values.push(Integer.parseInt(sbuf2.toString()));
+                System.out.println(Spreadsheet.getCell(row,Integer.parseInt(sbuf2.toString().substring(1))));
+                values.push(Integer.parseInt(Spreadsheet.getCell(row,Integer.parseInt(sbuf2.toString().substring(1))).getValue()));
 
                 // right now the i points to the character next to the digit, since the for loop also increases
                 // the i, we would skip one token position; we need to decrease the value of i by 1 to correct the offset.
@@ -125,7 +137,7 @@ public class Algorithm {
             System.out.println(temp - temp_integer);
             rank = temp - temp_integer ;
         }
-        return rank;
+        return rank-1; // to have 0 as A, etc..
     }
 
     // Driver method to test above methods

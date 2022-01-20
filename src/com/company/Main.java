@@ -17,34 +17,33 @@ public class Main {
         spreadsheet_obj.setCell(0,2,"tres");
         spreadsheet_obj.setCell(1,0,"1");
         spreadsheet_obj.setCell(1,1,"2");
-        spreadsheet_obj.setCell(1,2,"3");
+//        spreadsheet_obj.setCell(1,2,"3");
         spreadsheet_obj.setCell(2,0,"test");
         System.out.println(spreadsheet_obj.getCell(0,0).getContent());
         System.out.println(spreadsheet_obj.getCell(0,0).getValue());
 
-        spreadsheet_obj.displaySheet();
-        spreadsheet_obj.exportSpreadSheet();
+//        spreadsheet_obj.displaySheet();
+//        spreadsheet_obj.exportSpreadSheet();
 
-        // spreadsheet importing
-        ArrayList<ArrayList<String>> importedSPreadSheet = Spreadsheet.importSpreadsheet();
-        int row = importedSPreadSheet.size();
-        int col = importedSPreadSheet.get(0).size();
-       // Collections.(importedSPreadSheet.stream().count()
-        System.out.println("row and col" +row+" "+col);
-        System.out.println("0 2 value " + importedSPreadSheet.get(0).get(2));
+        //// spreadsheet importing
+//        ArrayList<ArrayList<String>> importedSPreadSheet = Spreadsheet.importSpreadsheet();
+//        int row = importedSPreadSheet.size();
+//        int col = importedSPreadSheet.get(0).size();
+       /////// Collections.(importedSPreadSheet.stream().count()
 
-        Spreadsheet spreadImported = new Spreadsheet( row, col);
-        for (int i=0; i<row;i++) {
-            for (int j = 0; j < col; j++) {
-                System.out.println(importedSPreadSheet.get(i).get(j));
-                if (!importedSPreadSheet.get(i).get(j).trim().isEmpty()) {
+//        Spreadsheet spreadImported = new Spreadsheet( row, col);
+//        for (int i=0; i<row;i++) {
+//            for (int j = 0; j < col; j++) {
+//                System.out.println(importedSPreadSheet.get(i).get(j));
+//                if (!importedSPreadSheet.get(i).get(j).trim().isEmpty()) {
+//                    spreadImported.setCell(i, j, importedSPreadSheet.get(i).get(j));
+//                }
+//            }
+//        }
 
-                    spreadImported.setCell(i, j, importedSPreadSheet.get(i).get(j));
-                } else {
-                    System.out.println("VACIO at "+i+" "+j);
-                }
-            }
-        }
+        spreadsheet_obj.setCell(1,2,"=B1+B2");
+        System.out.println(spreadsheet_obj.getCell(1,2).getContent());
+        System.out.println("value : "+spreadsheet_obj.getCell(1,2).getValue());
 
 //        spreadImported.displaySheet();
 //        spreadsheet_obj.refreshCellValue(0,0);
