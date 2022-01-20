@@ -15,7 +15,7 @@ The following methods of Spreadsheet.java are used :
  
  2.- The exportSpreadSheet method transfer to a .csv file and export the values of a Spreadsheet  (https://github.com/QuentinLaure/ARQSOFT_Project/blob/Alternative1/src/com/company/Spreadsheet.java#L88).
  
-3.- Formulas has been tested to admit values from other cell positions like A1, A2,B1 etc on Integer format.
+3.- Formulas has been tested to admit values from other cell positions like =A1, =A2, = A1+100x8,etc on Integer format.
 
 4.- Our class diagram is depicted in the following link: https://github.com/QuentinLaure/ARQSOFT_Project/blob/Alternative1/Package%20diagram.png
 
