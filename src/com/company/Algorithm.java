@@ -79,11 +79,6 @@ public class Algorithm {
                     return null;
                 }
             }
-             else {
-                if ( tokens[i] != '=' )
-                 return null;
-
-            }
         }
 
         // Entire expression has been parsed at this point, apply remaining ops to remaining values
