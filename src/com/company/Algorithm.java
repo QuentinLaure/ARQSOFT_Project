@@ -30,8 +30,9 @@ public class Algorithm {
                 int row = getAlphabeticalRank(tokens[i]);
                 StringBuffer sbuf2 = new StringBuffer();
 
+               System.out.println("i value "+ i +" token {i} "+tokens[i] );
                 // There may be more than one digits in number
-                if(i<tokens.length) {
+               /* if(i<tokens.length) {
                     while (i < tokens.length && (tokens[i] >= '0' && tokens[i] <= '9') || Character.isUpperCase(tokens[i])) {
                         sbuf2.append(tokens[i]);
                         i++;
@@ -39,7 +40,7 @@ public class Algorithm {
                         System.out.println("i = " + i + "/" + tokens.length);
                         if(i==tokens.length){
                             System.out.println("We continue");
-                            continue;
+                            break;
                         }
 
                     }
@@ -47,11 +48,28 @@ public class Algorithm {
                 System.out.println("printing the string value "+sbuf2.toString()+" at position (" +row+","+ sbuf2.toString().substring(1) +") and length = " + sbuf2.toString().length());
 //                System.out.println("printing the string int value char" + Integer.parseInt( sbuf2.toString() ) );
 //                values.push(Integer.parseInt(sbuf2.toString()));
-                System.out.println(Spreadsheet.getCell(row,Integer.parseInt(sbuf2.toString().substring(1))));
+                int col = Integer.parseInt( sbuf2.toString().substring(1) );
+                System.out.println(Spreadsheet.getCell(row-1,col-1));
                 values.push(Integer.parseInt(Spreadsheet.getCell(row,Integer.parseInt(sbuf2.toString().substring(1))).getValue()));
-
+*/
                 // right now the i points to the character next to the digit, since the for loop also increases
                 // the i, we would skip one token position; we need to decrease the value of i by 1 to correct the offset.
+
+                while (i < tokens.length && (tokens[i] >= '0' && tokens[i] <= '9')|| Character.isUpperCase(tokens[i]) ) {
+                    System.out.println("on while");
+                    sbuf2.append(tokens[i++]);
+                    if (i == tokens.length) // added to match value when we have only "A1" or B2 , etc as input after =.
+                    { break;}
+                }
+
+                System.out.println("printing the string value "+sbuf2.toString()+" at position (" +row+","+ sbuf2.toString().substring(1) +") and length = " + sbuf2.toString().length());
+
+                int col = Integer.parseInt( sbuf2.toString().substring(1) );
+                System.out.println("printing the string value 2 "+sbuf2.toString()+" at position (" +row+","+ col +") and length = " + sbuf2.toString().length());
+                System.out.println("the value is "+ Spreadsheet.getCell(row, col -1).getContent());
+                int resultVAlue = Integer.parseInt( Spreadsheet.getCell(row, col -1).getContent());
+                System.out.println("printing the string int value char" + resultVAlue);
+                values.push(resultVAlue);
                 i--;
             }
 
